@@ -1,0 +1,122 @@
+.visible-xs{
+	display: none !important;
+}
+.hidden-xs{
+	display: block !important;
+}
+@media(max-width: 767px){
+	.visible-xs{
+		display: block !important;
+	}
+	.hidden-xs{
+		display: none !important;
+	}
+}
+@media(max-width: 1770px){
+	body, html{
+		font-size: 15px;
+	}
+	.text1{
+		top: 14%;
+	}
+}
+@media(max-width: 1440px){
+	body, html{
+		font-size: 14px;
+	}
+}
+@media(max-width: 1366px){
+	body, html{
+		font-size: 12px;
+	}
+}
+@media(max-width: 1200px){
+	body, html{
+		font-size: 11px;
+	}
+	.page3 h3{
+		font-size: 2rem;
+	}
+}
+@media(max-width: 1024px){
+	body, html{
+		font-size: 14px;
+	}
+	.text1{
+		top: 9%;
+		height: 6%;
+	}
+	.page{
+		padding: 0 1rem;
+	}
+	.page3{
+		align-items: center;
+		padding-top: 0
+	}
+}
+@media(max-width: 768px){
+	.text1{
+		top: 12%;
+		height: 6%;
+		left: 15%;
+	}
+}
+@media(max-width: 767px){
+	body, html{
+		font-size: 12px;
+	}
+	body:before{
+	    height: 13rem;
+	    background-size: 100% 100%;
+	    background-position: bottom;
+	}
+	body:after{
+	    height: 12.5rem;
+	    background-size: 100% 100%;
+	    background-position: bottom;
+	}
+	.page{
+	    align-items: flex-start;
+	    padding-top: 17.5rem;
+	}
+	.page h2{
+	    font-size: 3rem;
+	    margin-top: 5rem;
+	}
+	.page h1{
+	    font-size: 4rem;
+	}
+	.page3 h3,.page3 h3 span{
+	    margin-bottom: 2rem;
+	    font-size: 1.5rem !important;
+	    line-height: 1;
+	}
+	.product1{
+	    width: 30%;
+	    left: 1%;
+	}
+	.product2{
+	    width: 60%;
+	}
+	.product3{
+	    width: 40%;
+	    left: 1%;
+	    bottom: 10%;
+	}
+	.product4{
+	    width: 37.5%;
+	    right: 1%;
+	    bottom: 10%;
+	}
+	.text1{
+	    top: 20%;
+	    height: 4.25rem;
+	    width: 60%;
+	    left: 5%;
+	}
+}
+@media(max-width: 400px){
+	body, html{
+		font-size: 10px;
+	}
+}	

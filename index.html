@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/responsive-style.css">
+	<title>Jordyn's Kitchen</title>
+</head>
+<body>
+<div class="menu">
+	<div class="overlay"></div>
+	<div class="closer"><i class="fa fa-close"></i></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h4>Menu</h4>
+				<hr>
+				<ul>
+					<li><a href="#">SHOP</a></li>
+					<li><a href="#">BLOG</a></li>
+					<li><a href="#">ABOUT</a></li>
+					<li><a href="#">CART (0)</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="nav-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<a href="#" class="logo"><img src="./assets/images/logo.png" alt="#"></a>
+			</div>
+			<div class="col-6">
+				<ul class="list-inline">
+					<li class="list-inline-item"><a href="#" class="btn_white">SHOP</a></li>
+					<li class="list-inline-item"><a href="#" class="nav_open"><img src="./assets/images/nav_toggle.png" alt="#"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="wrapper active-page1">
+  <div class="page page1">
+		<span>
+			<h3>Paleo, Vegan, & Refined Sugar Free <br><span>Sauces and Sweeteners</span></h3>
+			<h4>No longer sacrifice<br> taste for health.</h4>
+			<a href="#" class="btn_white">BUY NOW</a>
+		</span>
+		<img src="./assets/images/product1.png" alt="#" class="product1">
+		<img src="./assets/images/product2.png" alt="#" class="product2">
+  </div>
+  <div class="page page2">
+		<span>
+			<h2>Delicious Drizzles</h2>
+			<h1>Tasty Dips</h1>
+		</span>
+		<div class="text1"></div>
+    	<img src="./assets/images/product3.png" alt="#" class="product3">
+		<img src="./assets/images/product4.png" alt="#" class="product4">
+  </div>
+  <div class="page page3">
+		<span>
+			<h3 class="with_border text-left"><span><b>Nature's Nectar Sweeteners...</b></span></h3>
+			<h3 class="text-right"><span><b>Make it pop with just one drop.</b></span></h3>
+			<h3 class="sm_text"><span><b>Add to coffee, tea, smoothies and more.</b></span></h3>
+		</span>
+    	<img src="./assets/images/product5.png" alt="#" class="product2">
+  </div>
+</div>
+
+
+
+<script type="text/javascript" src="assets/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="assets/js/popper.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap-4.js"></script>
+<script src="assets/js/modernizr.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script>'use strict';
+$(document).ready(function() {
+  var $wrap = $(".wrapper"),
+      pages = $(".page").length,
+      scrolling = false,
+      currentPage = 1,
+      $navPanel = $(".nav-panel"),
+      $scrollBtn = $(".scroll-btn"),
+      $navBtn = $(".nav-btn");
+
+  /*****************************
+  ***** NAVIGATE FUNCTIONS *****
+  *****************************/
+  function manageClasses() {
+    $wrap.removeClass(function (index, css) {
+      return (css.match (/(^|\s)active-page\S+/g) || []).join(' ');
+    });
+    $wrap.addClass("active-page" + currentPage);
+    $navBtn.removeClass("active");
+    $(".nav-btn.nav-page" + currentPage).addClass("active");
+    $navPanel.addClass("invisible");
+    scrolling = true;
+    setTimeout(function() {
+      $navPanel.removeClass("invisible");
+      scrolling = false;
+    }, 1000);
+  }
+  function navigateUp() {
+    if (currentPage > 1) {
+      currentPage--;
+      if (Modernizr.csstransforms) {
+        manageClasses();
+      } else {
+        $wrap.animate({"top": "-" + ( (currentPage - 1) * 100) + "%"}, 1000);
+      }
+    }
+  }
+
+  function navigateDown() {
+    if (currentPage < pages) {
+      currentPage++;
+      if (Modernizr.csstransforms) {
+        manageClasses();
+      } else {
+        $wrap.animate({"top": "-" + ( (currentPage - 1) * 100) + "%"}, 1000);
+      }
+    }
+  }
+
+  /*********************
+  ***** MOUSEWHEEL *****
+  *********************/
+  $(document).on("mousewheel DOMMouseScroll", function(e) {
+    if (!scrolling) {
+      if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+        navigateUp();
+      } else { 
+        navigateDown();
+      }
+    }
+  });
+
+  /**************************
+  ***** RIGHT NAVIGATION ****
+  **************************/
+
+  /* NAV UP/DOWN BTN PAGE NAVIGATION */
+  $(document).on("click", ".scroll-btn", function() {
+    if ($(this).hasClass("up")) {
+      navigateUp();
+    } else {
+      navigateDown();
+    }
+  });
+
+  /* NAV CIRCLE DIRECT PAGE BTN */
+  $(document).on("click", ".nav-btn", function() {
+    if (!scrolling) {
+      var target = $(this).attr("data-target");
+      if (Modernizr.csstransforms) {
+        $wrap.removeClass(function (index, css) {
+          return (css.match (/(^|\s)active-page\S+/g) || []).join(' ');
+        });
+        $wrap.addClass("active-page" + target);
+        $navBtn.removeClass("active");
+        $(this).addClass("active");
+        $navPanel.addClass("invisible");
+        currentPage = target;
+        scrolling = true;
+        setTimeout(function() {
+          $navPanel.removeClass("invisible");
+          scrolling = false; 
+        }, 1000);
+      } else {
+        $wrap.animate({"top": "-" + ( (target - 1) * 100) + "%"}, 1000);
+      }
+    }
+  });
+
+});
+</script>
+<script type="text/javascript">
+	$('.nav_open').click(function(){
+		$('.menu').addClass('active');
+	});
+	$('.closer').click(function(){
+		$('.menu').removeClass('active');
+	});
+</script>
+</body>
+</html>
